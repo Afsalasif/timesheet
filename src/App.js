@@ -1,25 +1,33 @@
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css';
 
-function App() {
+
+
+import { AdminContextProvider } from './pages/admin/AdminContext';
+import Adminmain from './pages/admin/Adminmain';
+import { UserContextProvider } from './pages/user/userContext';
+
+import UserMain from './pages/user/UserMain';
+
+const App = () => {
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+
+    <BrowserRouter>
+      <Routes>
+
+        <Route path='/admin' exact element={<AdminContextProvider><Adminmain /></AdminContextProvider>} />
+
+        <Route path='/' exact element={<UserContextProvider><UserMain /></UserContextProvider> }/>
+
+
+      </Routes>
+    </BrowserRouter>
   );
 }
+
 
 export default App;
